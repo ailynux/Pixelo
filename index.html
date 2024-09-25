@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixelo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #282c34;
+      color: white;
+    }
+    canvas {
+      border: 1px solid #fff;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #61dafb;
+      color: #282c34;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+    <h1>Minimalist Art Generator</h1>
+
+  <canvas id="artCanvas" width="500" height="500"></canvas>
+  <button onclick="generateArt()">Make Art</button>
+  <button id="downloadBtn">Download Art</button>
+
+  <script src="/js/app.js"></script>
+
+<script>
+document.getElementById("downloadBtn").addEventListener("click", function() {
+  const canvas = document.getElementById('artCanvas');
+  const link = document.createElement('a');
+  link.download = 'generated-art.png';
+  link.href = canvas.toDataURL();
+  link.click();
+});
+</script>
+
+</body>
+</html>
