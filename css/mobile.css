@@ -1,0 +1,115 @@
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard {
+        grid-template-rows: auto;
+        gap: 15px;
+    }
+
+    .square-section {
+        padding: 15px;
+    }
+
+    .social-icons {
+        gap: 20px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+}
+
+/* Mobile Responsiveness for iPhones and small screens */
+@media (max-width: 576px) {
+    .art-generator h2 {
+        font-size: 20px; /* Smaller text for smaller devices */
+        margin-bottom: 10px;
+    }
+
+    canvas {
+        width: 100%; /* Full width on smaller screens */
+        max-width: 250px; /* Smaller max width for iPhone */
+    }
+
+    .btn {
+        padding: 8px 12px; /* Smaller padding for smaller screens */
+        font-size: 11px;
+    }
+
+    .button-group {
+        gap: 8px; /* Less gap between buttons */
+        flex-direction: row; /* Stack buttons vertically */
+        align-items: center; /* Center buttons */
+    }
+}
+/* Responsive Visualizer - Make Smaller */
+@media (max-width: 768px) {
+    #visualizer-container {
+        width: 90%; /* Slightly reduce width for better fit */
+        height: 200px; /* Reduce height to make it smaller */
+        margin: 10px 0; /* Add margin for separation */
+    }
+
+    .bar {
+        width: calc(100% / 40 - 2px); /* Make bars thinner */
+        margin: 0 0.5px; /* Reduce gap between bars */
+    }
+}
+
+/* Responsive Controls - Smaller and More Compact */
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+        width: 80%; /* Make controls narrower */
+        padding: 10px; /* Reduce padding */
+        margin: 15px auto; /* Add margin for balance */
+    }
+
+    .controls input[type="range"] {
+        width: 120px; /* Reduce range slider width */
+        margin-bottom: 10px; /* Reduce margin */
+    }
+}
+
+/* Title Styling - Reduce Size for Better Fit */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 18px; /* Make the title smaller */
+        margin-bottom: 10px; /* Add some spacing below */
+        text-align: center; /* Ensure title is centered */
+    }
+
+    .square-section h2 {
+        font-size: 18px; /* Reduce the title size in the square sections */
+        letter-spacing: 2px; /* Reduce letter spacing */
+        margin-bottom: 8px; /* Adjust the spacing */
+    }
+}
+
+/* Further Optimizations for Smaller Screens */
+@media (max-width: 576px) {
+    #visualizer-container {
+        width: 100%; /* Full width on smaller screens */
+        height: 180px; /* Further reduce height */
+    }
+
+    .bar {
+        width: calc(100% / 50 - 1.5px); /* Make bars even thinner */
+        margin: 0 0.25px; /* Reduce gap even more */
+    }
+
+    .controls input[type="range"] {
+        width: 60px; /* Make range slider even smaller */
+        margin-bottom: 8px; /* Reduce margin for compact look */
+    }
+
+    /* Title adjustments for very small screens */
+    h2 {
+        font-size: 16px; /* Reduce title size even further */
+    }
+
+    .square-section h2 {
+        font-size: 16px; /* Reduce size in square sections */
+        letter-spacing: 1px; /* Reduce spacing for compactness */
+        margin-bottom: 5px; /* Adjust spacing */
+    }
+}

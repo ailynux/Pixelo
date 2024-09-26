@@ -1,0 +1,570 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base Styling for Black/Grey Theme */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #121212; /* Dark theme background */
+    color: #ffffff; /* Light text for contrast */
+}
+
+/* Dashboard Grid Layout */
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    padding: 30px;
+    height: 100vh;
+    background-color: #1b1f23;
+}
+
+.square-section {
+    background-color: #1c1c1c; /* Dark grey for sections */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.square-section:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Bubble Letter Effect */
+.square-section h2 {
+    font-size: 48px; /* Increase the size for a more pronounced bubble effect */
+    color: #ffffff; /* Base color for the bubble */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 10px;
+    display: inline-block;
+    background: linear-gradient(145deg, #00ffff, #0077ff); /* Gradient for the bubble fill */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    text-shadow:
+        -1px -1px 0px rgba(255, 255, 255, 0.7),  /* Light highlight on the top-left for 3D look */
+        2px 2px 5px rgba(0, 0, 0, 0.6);          /* Shadow for bubble depth */
+    transition: all 0.3s ease;
+}
+
+/* Add a border and inner shadow for a bubble effect */
+.square-section h2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px; /* Rounded edges to make it bubble-like */
+    border: 3px solid rgba(255, 255, 255, 0.6); /* Soft white border to simulate bubble shine */
+    box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.2); /* Inner shadow for a 3D puffy look */
+    z-index: -1;
+}
+
+/* Hover effect to make the bubble 'pop' */
+.square-section h2:hover {
+    transform: scale(1.1); /* Slight scale effect to make the bubble grow on hover */
+    text-shadow:
+        -2px -2px 0px rgba(255, 255, 255, 0.9),
+        3px 3px 10px rgba(0, 0, 0, 0.7); /* Stronger shadow and highlight for more depth */
+}
+
+/* Canvas Styling for Mobile Responsiveness */
+canvas {
+    border: 2px solid #ff69b4;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    width: 100%; /* Full width on mobile */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 400px; /* Limit the maximum size */
+}
+
+/* Art Generator Section */
+.art-generator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px; /* Reduced padding for smaller screens */
+    background-color: #1c1c1c;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.art-generator h2 {
+    font-size: 24px; /* Reduced size */
+    color: #ff69b4;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* Canvas Styling for Art Generator */
+canvas {
+    width: 90%; /* Smaller width for iPhone screens */
+    max-width: 300px; /* Adjust max width to 300px for smaller screens */
+    height: auto;
+    border: 2px solid #ff69b4;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+/* Button Group */
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+    flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 15px; /* Reduced padding for smaller screens */
+    font-size: 12px; /* Smaller font size for mobile */
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #ff79c6, #bd93f9);
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 105, 180, 0.5);
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    background: linear-gradient(45deg, #bd93f9, #ff79c6);
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.8), 0 0 25px rgba(136, 170, 202, 0.7);
+}
+
+.btn:active {
+    transform: scale(0.96);
+    background: linear-gradient(45deg, #8b60a9, #ff79c6);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 50%);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.6s ease;
+    z-index: -1;
+}
+
+.btn:active::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.btn:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.6), 0 0 30px rgba(255, 105, 180, 0.5);
+    opacity: 0.7;
+    z-index: -2;
+    transition: all 0.4s ease;
+}
+
+
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn {
+    position: relative;
+    padding: 12px 25px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #9f44d3, #4f407a);
+    color: #fff;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5), 0 0 20px rgba(161, 93, 125, 0.5);
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    background: linear-gradient(45deg, #7271c4, #9f44d3);
+    box-shadow: 0 0 20px rgba(116, 17, 197, 0.8), 0 0 30px rgba(136, 170, 202, 0.7);
+}
+
+.btn:active {
+    transform: scale(0.96);
+    background: linear-gradient(45deg, #2e14a1, #9b59b6);
+}
+
+/* Ripple Effect */
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 50%);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.6s ease;
+    z-index: -1;
+}
+
+.btn:active::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Glowing Effect on Hover */
+.btn:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    box-shadow: 0 0 20px rgba(255, 0, 119, 0.6), 0 0 30px rgba(255, 0, 119, 0.5);
+    opacity: 0.7;
+    z-index: -2;
+    transition: all 0.4s ease;
+}
+
+/* Profile Section Styling */
+.profile-section {
+    background-image: url('../assets/architecture_breathing.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px;
+    color: #ffffff;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.profile-section h2, .profile-section p {
+    background: linear-gradient(45deg, rgba(255, 0, 119, 0.8), rgba(0, 204, 255, 0.8)); /* Cool gradient background */
+    padding: 12px 25px;
+    border-radius: 12px;
+    display: inline-block;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 10px rgba(0, 204, 255, 0.5), 0 0 20px rgba(255, 0, 119, 0.5); /* Neon glow around the element */
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+}
+
+/* Glow effect on hover */
+.profile-section h2:hover, .profile-section p:hover {
+    transform: translateY(-3px); /* Adds a lift effect */
+    box-shadow: 0 0 15px rgba(0, 204, 255, 0.8), 0 0 25px rgba(255, 0, 119, 0.8); /* Stronger glow */
+    background: linear-gradient(45deg, rgba(0, 204, 255, 0.8), rgba(255, 0, 119, 0.8)); /* Reverse the gradient on hover */
+}
+
+/* Glowing Border Effect */
+.profile-section h2::before, .profile-section p::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2), 0 0 15px rgba(0, 204, 255, 0.4);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.profile-section h2:hover::before, .profile-section p:hover::before {
+    opacity: 1;
+    transform: scale(1.05); /* Slight scaling effect */
+}
+
+/* Floating particles effect */
+.profile-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    animation: particle-glow 8s infinite ease-in-out;
+}
+
+@keyframes particle-glow {
+    0%, 100% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 50% 50%;
+    }
+}
+
+
+.profile-section img.profile-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #ffffff;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.6);
+    margin-bottom: 15px;
+}
+
+
+/* Social Section with Background Image */
+.square-section.social-section {
+    background: url('../assets/hopeful.webp') no-repeat center center;
+    background-size: cover; /* Make sure the background image covers the whole section */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6); /* Keep the shadow for depth */
+    position: relative;
+    overflow: hidden;
+    color: #ffffff;
+    text-align: center;
+}
+
+/* Optional overlay for text readability */
+.square-section.social-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay to improve text readability */
+    z-index: 0;
+    border-radius: 15px;
+}
+
+/* Ensure content is above the overlay */
+.square-section.social-section h2, 
+.square-section.social-section .social-icons {
+    position: relative;
+    z-index: 1;
+}
+
+/* Social Section Heading */
+.social-section h2 {
+    color: #00ffff;
+    font-size: 24px;
+    text-shadow: 0 0 5px #00ffff; /* Neon glow effect */
+    margin-bottom: 20px;
+}
+
+/* Social Icons: Layout */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Spacing between the icons */
+    margin-top: 10px;
+}
+
+/* Social Icon Styling */
+.social-icon {
+    font-size: 40px;
+    color: #00ffff; /* Default color */
+    transition: transform 0.4s ease, color 0.3s ease;
+}
+
+/* Hover Effect on Icons */
+.social-icon:hover {
+    transform: scale(1.3) rotate(10deg); /* Slight rotation and enlargement */
+    color: #00e6e6; /* Slightly different hover color */
+}
+
+
+
+#visualizer-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 350px;
+    width: 80%;
+    margin-top: 15px;
+    border: 2px solid #00ffff; /* Neon blue border */
+    border-radius: 15px;
+    background: linear-gradient(145deg, #0a0a0a, #1c1c1c); /* Darker background with subtle gradient */
+    padding: 10px;
+    box-shadow: 0 6px 15px rgba(0, 255, 255, 0.3), 0 6px 25px rgba(0, 255, 255, 0.2); /* Neon blue outer glow */
+    overflow: hidden;
+    position: relative;
+}
+
+/* Neon Bar Styling with Color Animation */
+.bar {
+    width: calc(100% / 60 - 2px); /* More bars for a denser look */
+    margin: 0 1px;
+    transition: height 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 5px 5px 0 0;
+    position: relative;
+    background: linear-gradient(45deg, #00ffff, #0077ff); /* Default gradient */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 15px rgba(0, 119, 255, 0.5); /* Default glow */
+    animation: changeColors 5s ease-in-out infinite; /* Animate color changes */
+}
+
+/* Animate the bar colors to transition smoothly */
+@keyframes changeColors {
+    0% {
+        background: linear-gradient(45deg, #00ffff, #0077ff); /* Neon blue */
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 15px rgba(0, 119, 255, 0.5); 
+    }
+    25% {
+        background: linear-gradient(45deg, #ff00ff, #ff4c4c); /* Neon pink to red */
+        box-shadow: 0 0 10px rgba(255, 0, 255, 0.5), 0 0 15px rgba(255, 76, 76, 0.5);
+    }
+    50% {
+        background: linear-gradient(45deg, #ff9f1c, #f39c12); /* Orange gradient */
+        box-shadow: 0 0 10px rgba(255, 159, 28, 0.5), 0 0 15px rgba(243, 156, 18, 0.5);
+    }
+    75% {
+        background: linear-gradient(45deg, #2ecc71, #1abc9c); /* Green to teal */
+        box-shadow: 0 0 10px rgba(46, 204, 113, 0.5), 0 0 15px rgba(26, 188, 156, 0.5);
+    }
+    100% {
+        background: linear-gradient(45deg, #00ffff, #0077ff); /* Back to Neon blue */
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 15px rgba(0, 119, 255, 0.5);
+    }
+}
+
+/* Hover Interaction */
+.bar:hover {
+    transform: scaleY(1.2); /* Bars enlarge on hover */
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 25px rgba(0, 119, 255, 0.8); /* Stronger glow */
+}
+
+/* Pulsating Effect for Bars */
+.bar::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 255, 255, 0.2); /* Faint neon light */
+    transform: translateX(-50%) scaleY(0.9);
+    animation: pulse 1.5s infinite alternate; /* Pulsating light effect */
+    opacity: 0;
+    border-radius: 5px 5px 0 0;
+    transition: opacity 0.3s ease;
+}
+
+.bar:hover::after {
+    opacity: 1; /* Show pulsating effect on hover */
+}
+
+@keyframes pulse {
+    0% {
+        transform: translateX(-50%) scaleY(0.9);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateX(-50%) scaleY(1.1);
+        opacity: 1;
+    }
+}
+
+/* Different Colors for Comparisons */
+.bar.compare {
+    background: linear-gradient(45deg, #ff00ff, #ff4c4c); /* Pink to red gradient for comparison */
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.5), 0 0 15px rgba(255, 76, 76, 0.5); /* Pink-red glow */
+}
+
+/* Different Colors for Swap Bars */
+.bar.swap {
+    background: linear-gradient(45deg, #ff9f1c, #f39c12); /* Orange gradient for swaps */
+    box-shadow: 0 0 10px rgba(255, 159, 28, 0.5), 0 0 15px rgba(243, 156, 18, 0.5); /* Orange glow */
+}
+
+/* Sorted Bars with Green Glow */
+.bar.sorted {
+    background: linear-gradient(45deg, #2ecc71, #1abc9c); /* Green to teal gradient for sorted bars */
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.5), 0 0 15px rgba(26, 188, 156, 0.5); /* Green glow */
+}
+
+
+/* Controls Section */
+.controls {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #1c1c1c;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1px;
+}
+
+/* Range Input Styling */
+.controls input[type="range"] {
+    width: 220px;
+    height: 8px;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #00ffff;
+    outline: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.controls input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    border: 2px solid #00ffff;
+    cursor: pointer;
+}
+
+.controls input[type="range"]:hover::-webkit-slider-thumb {
+    background-color: #50c0e8;
+}
+

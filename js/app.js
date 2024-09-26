@@ -158,3 +158,25 @@ function randomColor() {
     const colors = ['#ff9a9e', '#fad0c4', '#a18cd1', '#fcb69f', '#ff677d', '#556270', '#4ecdc4', '#2b2d42'];
     return colors[Math.floor(Math.random() * colors.length)];
 }
+
+// Function to draw a spiral arm for a spiral galaxy
+function drawSpiralArm(ctx, x, y, size, angle) {
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+    ctx.lineWidth = Math.random() * 1.5 + 0.5;
+    ctx.beginPath();
+
+    // Start from the galaxy's core and draw outward
+    let radius = size / 10;
+    ctx.moveTo(x + Math.cos(angle) * radius, y + Math.sin(angle) * radius);
+
+    // Create a spiral arm by drawing multiple segments
+    for (let i = 0; i < 100; i++) {
+        radius += size / 100;  // Increase radius gradually
+        angle += Math.PI / 64; // Spiral by changing angle gradually
+        const nx = x + Math.cos(angle) * radius;
+        const ny = y + Math.sin(angle) * radius;
+        ctx.lineTo(nx, ny);
+    }
+
+    ctx.stroke();
+}
